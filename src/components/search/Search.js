@@ -8,7 +8,7 @@ import ImageResults from '../image-results/ImageResults';
 class Search extends Component {
   state = {
     searchText: '',
-    amount: 15,
+    amount: 25,
     apiUrl: 'https://pixabay.com/api',
     apiKey: '11943003-00c3ad90970e59cfe1f16c6a6',
     images: []
@@ -26,7 +26,10 @@ class Search extends Component {
               this.state.searchText
             }&image_type=photo&per_page=${this.state.amount}&safesearch=true`
           )
-          .then(res => this.setState({ images: res.data.hits }))
+          .then(res =>{ 
+                console.log(res)
+                this.setState({ images: res.data.hits })
+        })
           .catch(err => console.log(err));
       }
     });
